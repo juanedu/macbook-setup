@@ -1,0 +1,23 @@
+---
+- name: MacBook set-up for development using ansible
+  hosts: all
+  vars: 
+    homebrew_installed_packages:
+      - python3
+      - git
+      - unar
+
+    homebrew_cask_apps:
+      - google-chrome
+      - sublime-text
+      - visual-studio-code
+
+    homebrew_taps:
+      - homebrew/core
+      - homebrew/cask
+
+#    homebrew_uninstalled_packages:
+#      - visual-studio-code
+
+  roles:
+    -  geerlingguy.mac.homebrew
