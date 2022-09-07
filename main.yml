@@ -4,19 +4,29 @@
   vars: 
     homebrew_installed_packages:
       - python3
+      - maven
       - git
-      - unar
+      - minikube
+      - kubernetes-cli
+      - terraform
+      - awscli
 
     homebrew_cask_apps:
       - google-chrome
       - sublime-text
       - visual-studio-code
+      - intellij-idea-ce
+      - telegram
+      - dropbox
+      - onedrive
+      - calibre
 
     homebrew_taps:
       - homebrew/core
       - homebrew/cask
 
-#    homebrew_uninstalled_packages:
+    homebrew_uninstalled_packages:
+       [ ]
 #      - visual-studio-code
 
   roles:
