@@ -1,6 +1,14 @@
 ---
 - name: MacBook set-up for development using ansible
   hosts: all
+
+  vars_prompt:
+    - name: app_st_username
+      prompt: App Store username
+      private: no
+#    - name: app_st_password
+#      prompt: App Store password
+
   vars: 
     homebrew_installed_packages:
       - python3
@@ -25,9 +33,15 @@
       - homebrew/core
       - homebrew/cask
 
-    homebrew_uninstalled_packages:
-       [ ]
+#    homebrew_uninstalled_packages:
+#      [ ]
 #      - visual-studio-code
+
+    mas_installed_apps: 
+      - {id: 1243219105, name: "F5Access"} # Prisma's VPN Client
+    mas_email: {{ app_st_username }}
+    mas_password: ""
+    mas_signin_dialog: true
 
   roles:
     - role: geerlingguy.mac.homebrew
