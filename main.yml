@@ -39,7 +39,7 @@
 
     mas_installed_apps: 
       - {id: 1243219105, name: "F5Access"} # Prisma's VPN Client
-    mas_email: {{ app_st_username }}
+    mas_email: "{{ app_st_username }}"
     mas_password: ""
     mas_signin_dialog: true
 
