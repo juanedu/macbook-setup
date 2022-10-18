@@ -58,6 +58,8 @@ Instalar HomeBrew (http://brew.sh)
 Instalar ansible
 - brew install ansible
 
+TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
+
 Crear una carpeta 'code' en el home y clonar este repositorio
 - git clone https://github.com/juanedu/macbook-setup.git
 
