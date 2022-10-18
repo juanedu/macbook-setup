@@ -15,6 +15,8 @@ Luego de reinstalar macOS, comprobar que no haya actualizaciones pendientes del 
 
 Setear huellas para Touch ID (opcional si la MB cuenta con el dispositivo)
 
+Saltear configuracion de Apple Pay
+
 Configurar TimeMachine
 
 Deshabilitar Photos sync hacia iCloud
