@@ -56,18 +56,22 @@ Time Machine:
 
 -----
 
+## Ansible Playbook
+
 Instalar HomeBrew (http://brew.sh)
 
 Instalar ansible
-- brew install ansible
+
+    brew install ansible
+
+Crear una carpeta 'code' en el home y clonar este repositorio
+
+    git clone https://github.com/juanedu/macbook-setup.git
 
 TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
 
-Crear una carpeta 'code' en el home y clonar este repositorio
-- git clone https://github.com/juanedu/macbook-setup.git
-
-ansible-galaxy install -r requirements.yml
-ansible-playbook main.yml --ask-become-pass
+    ansible-galaxy install -r requirements.yml
+    ansible-playbook main.yml --ask-become-pass
 
 
 Instalar iTerm2 (vía brew)
@@ -82,7 +86,7 @@ Instalar iTerm2 (vía brew)
 
 Webs:
 
-https://nartc.me/blog/macos-dev-setup
-https://sourabhbajaj.com/mac-setup/
+https://nartc.me/blog/macos-dev-setup  
+https://sourabhbajaj.com/mac-setup/  
 https://www.robinwieruch.de/mac-setup-web-development/
 
