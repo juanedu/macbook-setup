@@ -2,22 +2,20 @@
 
 ## MBP Initial Setup
 
-TODO: Automatizar configuración de apps (ansible)
+Durante la configuracion inicial, conectarse al wifi de turno e ingresar el Apple ID cuando sea necesario.
 
-TODO: ansible o homebrew para automatizar configuración? Que se necesita instalar primero para automatizar lo mas posible?
+Setear huellas para Touch ID (opcional si la MB cuenta con el dispositivo)
 
-INFO: python3 ya esta incluido en macOS.
-
-## Configuración 
+Omitir configuracion de Apple Pay
 
 Luego de reinstalar macOS, comprobar que no haya actualizaciones pendientes del SO.
 - System Preferences - Software Update
 
-Setear huellas para Touch ID (opcional si la MB cuenta con el dispositivo)
-
-Saltear configuracion de Apple Pay
-
 Configurar TimeMachine
+
+## Configuración 
+
+TODO: Automatizar con defaults y dotfiles
 
 Deshabilitar Photos sync hacia iCloud
 - System Preferences - Apple ID - iCloud - Photos
@@ -52,6 +50,9 @@ Keyboard:
 
 Display:
 - Night Shift - Sunset to Sunrise
+
+Time Machine:
+- Show Time Machine in menu bar
 
 -----
 
