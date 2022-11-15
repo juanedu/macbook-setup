@@ -12,12 +12,16 @@
   vars: 
     homebrew_installed_packages:
       - python3
+      - openjdk@17
       - maven
       - git
       - minikube
       - kubernetes-cli
       - terraform
       - awscli
+
+    homebrew_linked_keg_only_packages:
+      - openjdk@17
 
     homebrew_cask_apps:
       - google-chrome
@@ -49,3 +53,13 @@
     - role: geerlingguy.mac.mas
       when: mas_installed_apps or mas_installed_app_ids
       tags: ['mas']
+
+  tasks:
+  - name: Link keg-only packages
+    community.general.homebrew:
+      name: "{{ item.name | default(item) }}"
+      state: linked
+    loop: "{{homebrew_linked_keg_only_packages}}"
+    notify: 
+      - Clear homebrew cache
+
