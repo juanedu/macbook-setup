@@ -10,6 +10,7 @@ Omitir configuracion de Apple Pay
 
 Luego de reinstalar macOS, comprobar que no haya actualizaciones pendientes del SO.
 - System Preferences - Software Update
+- System Preferences - General - Software Update (<- Ventura)
 
 Configurar TimeMachine
 
