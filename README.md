@@ -10,6 +10,7 @@ Omitir configuracion de Apple Pay
 
 Luego de reinstalar macOS, comprobar que no haya actualizaciones pendientes del SO.
 - System Preferences - Software Update
+- System Preferences - General - Software Update (<- Ventura)
 
 Configurar TimeMachine
 
@@ -27,7 +28,7 @@ Finder:
 - Mantener Option - muestra el path bar
 
 Trackpad:
-- Tap to Click
+- Tap to Click (ver defaults)
 - App exposé
 
 Accessibility:
@@ -39,13 +40,13 @@ Security & Privacy:
 - Firewall - Turn On firewall
 
 Dock & Menu bar:
-- Auto hide and show the Dock
+- Auto hide and show the Dock (ver defaults)
 
 Keyboard:
 - Touch Bar shows function keys
   - Si no tiene Touch Bar: Use F1, F2, etc. as standard function keys
-- Ajustar Key repeat (fast) y Delay until repeat (short)
-- Text - Deshabilitar “Correct spelling automatically”
+- Ajustar Key repeat (fast) y Delay until repeat (short) (ver defaults)
+- Text - Deshabilitar “Correct spelling automatically” (ver defaults)
 - Cambiar double (") y single quotes (')
 
 Display:
@@ -53,6 +54,42 @@ Display:
 
 Time Machine:
 - Show Time Machine in menu bar
+
+Algunos defaults:
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
 
 -----
 
@@ -89,4 +126,8 @@ Webs:
 https://nartc.me/blog/macos-dev-setup  
 https://sourabhbajaj.com/mac-setup/  
 https://www.robinwieruch.de/mac-setup-web-development/
+
+https://wilsonmar.github.io/dotfiles/ (dotfiles y defaults)
+https://github.com/mathiasbynens/dotfiles/blob/master/.macos (dotfiles y defaults)
+
 

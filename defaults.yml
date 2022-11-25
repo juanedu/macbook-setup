@@ -1,0 +1,10 @@
+---
+- name: 
+
+- community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: bool
+    value: true
+    state: present
+
