@@ -14,6 +14,8 @@ Luego de reinstalar macOS, comprobar que no haya actualizaciones pendientes del 
 
 Configurar TimeMachine
 
+Una vez que este configurado iCloud Drive, 
+
 ## Configuración 
 
 TODO: Automatizar con defaults y dotfiles
@@ -101,9 +103,16 @@ Instalar ansible
 
     brew install ansible
 
++ TODO: script para instalar la key para acceder a los repos de github, bajandola de icloud (Documents/macbook-pre-setup, hasta poder encriptar las keys y dejar el repo publico.
+
+    mkdir -m 0700 ~/.ssh
+    cp -p ~/Documents/macbook-pre-setup/juanedu@github*
+    (chequear permisos 0600 para private y 0644 para public)
+    ssh-add ~/.ssh/juanedu@github
+
 Crear una carpeta 'code' en el home y clonar este repositorio
 
-    git clone https://github.com/juanedu/macbook-setup.git
+    git clone git@github.com:juanedu/macbook-setup.git
 
 TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
 
