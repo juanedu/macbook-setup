@@ -1,0 +1,9 @@
+---
+- name: Previous tasks required for main setup
+  hosts: all
+
+  vars:
+    project_root: .
+
+  roles:
+    - git-pre-commit-setup

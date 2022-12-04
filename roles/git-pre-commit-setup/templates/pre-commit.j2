@@ -1,0 +1,41 @@
+#!/bin/sh
+
+set -x
+
+ANSIBLE_VAULT="$(which ansible-vault)"
+ANSIBLE_VAULT_PASSWORD_FILE=.ansible_vault_password
+
+# Test pwd file exists
+test -s $ANSIBLE_VAULT_PASSWORD_FILE
+rc=${?}
+if [ ${rc} -eq 1 ]; then
+    echo "ATTENTION: Please create '$PWD/$ANSIBLE_VAULT_PASSWORD_FILE' with this project's Ansible Vault password" && exit 1
+fi
+
+staged_secret_changes="$(git diff --staged --name-only HEAD --diff-filter=ACM -- secrets | xargs)"
+
+if [ -z "${staged_secret_changes}" ]; then
+  echo "pre-commit: no added or modified staged files in secrets directory"
+  exit 0
+fi
+
+echo "pre-commit: added or modified staged files in secrets directory, will make sure they're encrypted"
+
+for i in ${staged_secret_changes};
+do
+  output="$("${ANSIBLE_VAULT}" encrypt $i --vault-password-file $ANSIBLE_VAULT_PASSWORD_FILE 2>&1)"
+  rc=${?}
+
+  if [ ${rc} -eq 0 ]; then
+    echo "pre-commit: staged file ${i} in secrets directory encrypted successfully"
+  else
+    if [[ "${output}" =~ "input is already encrypted" ]]; then
+      echo "pre-commit: staged file ${i} in secrets directory was already encrypted"
+    else
+      printf "pre-commit: failed to encrypt staged file ${i} in secrets directory:\n%s" "${output}"
+      exit 1
+    fi
+  fi ;
+  
+  git add $i
+done

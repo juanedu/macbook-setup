@@ -27,18 +27,16 @@ Una vez que este configurado iCloud Drive,
 brew install ansible
 ```
 
-> TODO: script para instalar la key para acceder a los repos de github, bajandola de icloud (Documents/macbook-pre-setup, hasta poder encriptar las keys y dejar el repo publico.
-```
-mkdir -m 0700 ~/.ssh
-cp -p ~/Documents/macbook-pre-setup/juanedu@github*
-(chequear permisos 0600 para private y 0644 para public)
-ssh-add ~/.ssh/juanedu@github
-```
-
 3. Crear una carpeta 'code' en el home y clonar este repositorio
 ```
 cd && mkdir code && cd code
 git clone git@github.com:juanedu/macbook-setup.git
+```
+
+4. Dentro de la carpeta del repositorio, crear el archivo con la password para ansible-vault 
+```
+vi .ansible_vault_password
+chmod 0600 .ansible_vault_password
 ```
 
 > TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
@@ -52,6 +50,19 @@ Instalar iTerm2 (vía brew)
 - Duplicar el profile default y hacerlo nuevo default
     - Windows - ajustar ancho y alto
     - Text - Underline cursor + Blinking
+
+
+## What I learned so far
+
+- Ansible basic usage, importing roles and creating custom ones, security best practices with ansible-vault.
+- Git commands, using hooks, resolve issues when merging.
+
+## What to learn next
+
+- How to test this project.
+- Improvements to maintenance with continuos integration and github actions
+- Custom settings the OS (defaults and dotfiles)
+- Custom settings installed apps
 
 -----
 ## Configuración 
