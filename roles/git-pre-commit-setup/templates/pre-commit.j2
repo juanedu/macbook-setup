@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 ANSIBLE_VAULT="$(which ansible-vault)"
 ANSIBLE_VAULT_PASSWORD_FILE=.ansible_vault_password
 
@@ -28,6 +26,7 @@ do
 
   if [ ${rc} -eq 0 ]; then
     echo "pre-commit: staged file ${i} in secrets directory encrypted successfully"
+    git add $i
   else
     if [[ "${output}" =~ "input is already encrypted" ]]; then
       echo "pre-commit: staged file ${i} in secrets directory was already encrypted"
@@ -35,7 +34,5 @@ do
       printf "pre-commit: failed to encrypt staged file ${i} in secrets directory:\n%s" "${output}"
       exit 1
     fi
-  fi ;
-  
-  git add $i
+  fi ;  
 done

@@ -39,9 +39,10 @@ vi .ansible_vault_password
 chmod 0600 .ansible_vault_password
 ```
 
-> TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
+5. Ejecutar los playbooks bootstrap y main
 
     ansible-galaxy install -r requirements.yml
+    ansible-playbook bootstrap.yml --ask-become-pass
     ansible-playbook main.yml --ask-become-pass
 
 
