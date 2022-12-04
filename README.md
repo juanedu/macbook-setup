@@ -16,6 +16,44 @@ Configurar TimeMachine
 
 Una vez que este configurado iCloud Drive, 
 
+-----
+
+## Ansible Playbook
+
+1. Instalar HomeBrew (http://brew.sh)
+
+2. Instalar ansible
+```
+brew install ansible
+```
+
+> TODO: script para instalar la key para acceder a los repos de github, bajandola de icloud (Documents/macbook-pre-setup, hasta poder encriptar las keys y dejar el repo publico.
+```
+mkdir -m 0700 ~/.ssh
+cp -p ~/Documents/macbook-pre-setup/juanedu@github*
+(chequear permisos 0600 para private y 0644 para public)
+ssh-add ~/.ssh/juanedu@github
+```
+
+3. Crear una carpeta 'code' en el home y clonar este repositorio
+```
+cd && mkdir code && cd code
+git clone git@github.com:juanedu/macbook-setup.git
+```
+
+> TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
+
+    ansible-galaxy install -r requirements.yml
+    ansible-playbook main.yml --ask-become-pass
+
+
+Instalar iTerm2 (vía brew)
+- Closing - deshabilitar confirmaciones de Quit
+- Duplicar el profile default y hacerlo nuevo default
+    - Windows - ajustar ancho y alto
+    - Text - Underline cursor + Blinking
+
+-----
 ## Configuración 
 
 TODO: Automatizar con defaults y dotfiles
@@ -92,45 +130,9 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-
------
-
-## Ansible Playbook
-
-Instalar HomeBrew (http://brew.sh)
-
-Instalar ansible
-
-    brew install ansible
-
-+ TODO: script para instalar la key para acceder a los repos de github, bajandola de icloud (Documents/macbook-pre-setup, hasta poder encriptar las keys y dejar el repo publico.
-
-    mkdir -m 0700 ~/.ssh
-    cp -p ~/Documents/macbook-pre-setup/juanedu@github*
-    (chequear permisos 0600 para private y 0644 para public)
-    ssh-add ~/.ssh/juanedu@github
-
-Crear una carpeta 'code' en el home y clonar este repositorio
-
-    git clone git@github.com:juanedu/macbook-setup.git
-
-TODO: Resolver provisionamiento de keys ssh para clonar repos. Quizas haya que hacer dos corridas de ansible: una para bajar los config files (ej: dropbox o icloud), y otra para ejecutar las tareas de configuracion de las apps copiando los archivos
-
-    ansible-galaxy install -r requirements.yml
-    ansible-playbook main.yml --ask-become-pass
-
-
-Instalar iTerm2 (vía brew)
-- Closing - deshabilitar confirmaciones de Quit
-- Duplicar el profile default y hacerlo nuevo default
-    - Windows - ajustar ancho y alto
-    - Text - Underline cursor + Blinking
-
-
-
 ——---
 
-Webs:
+## Webs:
 
 https://nartc.me/blog/macos-dev-setup  
 https://sourabhbajaj.com/mac-setup/  
