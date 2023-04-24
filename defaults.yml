@@ -1,10 +1,16 @@
 ---
-- name: 
+- name: Set preferences
+  community.general.osx_defaults:
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: Clicking
+      type: bool
+      value: false
+      state: present
 
-- community.general.osx_defaults:
-    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+- name: Set other preferences
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
     key: Clicking
     type: bool
-    value: true
-    state: present
-
+    value: false
+    state: present 
