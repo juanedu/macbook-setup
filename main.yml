@@ -33,7 +33,8 @@
       - onedrive
       - calibre
 
-    homebrew_taps: []
+    homebrew_taps: 
+      - hashicorp/tap
 
   #  homebrew_uninstalled_packages:
   #    [ ]
